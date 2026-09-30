@@ -1,10 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using AccesoDatos.Data;
 
 namespace AccesoDatos.Repositories
 {
-    internal class GenericRepository
+    public class GenericRepository<T> where T : class
     {
+        protected readonly ApplicationDbContext _context;
+
+        public GenericRepository()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        public void Agregar(T entidad)
+        {
+            _context.Set<T>().Add(entidad);
+            _context.SaveChanges();
+        }
+
+        public List<T> ObtenerTodos()
+        {
+            return _context.Set<T>().ToList();
+        }
     }
 }
