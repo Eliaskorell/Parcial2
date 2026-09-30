@@ -1,9 +1,9 @@
-﻿using AccesoDatos.Entities;
+﻿
 using AccesoDatos.Models;
 using AccesoDatos.Repositories;
 
 var artistaRepo = new ArtistaRepository();
-var cancionRepo = new CancionRepository();
+var cancionRepo = new CancionRepositorie();
 
 bool salir = false;
 
@@ -99,7 +99,7 @@ void AltaCancion()
     Console.Write("Duracion (segundos): ");
     int duracion = int.Parse(Console.ReadLine());
 
-    cancionRepo.Agregar(new Cancion
+    cancionRepo.Agregar(new Canciones
     {
         Titulo = titulo,
         DuracionSegundos = duracion,
@@ -136,7 +136,7 @@ void VerificarSiHayCanciones()
         Console.WriteLine("No hay canciones registradas.");
 }
 
-void Mostrar(List<Cancion> canciones)
+void Mostrar(List<Canciones> canciones)
 {
     if (canciones.Count == 0)
     {
